@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+
+\title{Quantum Computing 101}
+\author{jasper castell }
+\date{April 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Not-Gate}
+\subsection*{Standard}
+$\Ket{0} \xrightarrow{} \Ket{1}$ \\
+$\Ket{1} \xrightarrow{} \Ket{0} $ 
+
+\subsubsection*{In Superposition:}
+
+$\alpha \Ket{0} + \beta \Ket{1} \xrightarrow{} \alpha \Ket{1} + \beta \Ket{0}= \alpha \begin{bmatrix} 0 \\ 1 \end{bmatrix} + \beta \begin{bmatrix} 1 \\ 0 \end{bmatrix} \xrightarrow{} \alpha \begin{bmatrix} 1 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \end{bmatrix} $ 
+\subsubsection*{Graph:}
+
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  
+  \draw[<->] (-2,0)--(2,0) node[right]{$=$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$y$};
+  
+  \draw[line width=2pt,blue,-stealth](0,0)--(0,1) node[anchor=south west]{$\Ket{1}$};
+  \draw[line width=2pt,red,-stealth](0,0)--(1,0) node[anchor=north east]{$\Ket{0}$};
+\end{tikzpicture}
+\subfloat
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  
+  \draw[<->] (-2,0)--(2,0) node[right]{$x$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$y$};
+  
+  \draw[line width=2pt,blue,-stealth](0,0)--(0,1) node[anchor=south west]{$\begin{bmatrix} 1 \\ 0 \end{bmatrix}$};
+  \draw[line width=2pt,red,-stealth](0,0)--(1,0) node[anchor=north east]{$\begin{bmatrix} 0 \\ 1 \end{bmatrix}$};
+\end{tikzpicture}
+
+\subsection*{Example:}
+\subsubsection*{Linear Combination}
+$0,5 \Ket{0} + 2 \Ket{1} = 0,5 \begin{bmatrix} 0 \\ 1 \end{bmatrix} + 2 \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0,5 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 2 \end{bmatrix} = \begin{bmatrix} 0,5 \\ 2 \end{bmatrix} $ 
+\subsubsection*{Application Not-Gate(1):}
+$0,5 \Ket{1} + 2 \Ket{0} \xrightarrow{} 0,5 \begin{bmatrix} 1 \\ 0 \end{bmatrix} + 2 \begin{bmatrix} 0 \\ 1 \end{bmatrix} =  \begin{bmatrix} 2 \\ 0,5 \end{bmatrix} $ 
+\subsubsection*{Application Not-Gate(2):}
+$\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 0,5 \\ 2 \end{bmatrix} =\begin{bmatrix} 2 \\ 0,5 \end{bmatrix} $
+\subsubsection*{Visual:}
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  
+  \draw[<->] (-2,0)--(2,0) node[right]{$\xrightarrow{}$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$y$};
+  
+  \draw[line width=2pt,blue,-stealth](0,0)--(0,1) node[anchor=south west]{};
+  \draw[line width=2pt,red,-stealth](0,0)--(1,0) node[anchor=north east]{};
+  \draw[line width=2pt,orange,-stealth](0,0)--(1/2,2) node[anchor=south west]{$\begin{bmatrix} 0,5 \\ 2 \end{bmatrix}$};
+\end{tikzpicture}
+\subfloat
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  
+  \draw[<->] (-2,0)--(2,0) node[right]{$x$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$y$};
+  
+  \draw[line width=2pt,blue,-stealth](0,0)--(0,1) node[anchor=south west]{};
+  \draw[line width=2pt,red,-stealth](0,0)--(1,0) node[anchor=north east]{};
+  \draw[line width=2pt,orange,-stealth](0,0)--(2,1/2) node[anchor=south west]{$\begin{bmatrix} 2 \\ 0,5 \end{bmatrix}$};
+\end{tikzpicture}
+\end{document}
